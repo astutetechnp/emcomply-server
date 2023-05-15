@@ -4,7 +4,7 @@
   "description": "Backend server for emComply Management",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server",
+    "start": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -14,7 +14,7 @@
     "authentication",
     "mongodb"
   ],
-  "author": "bezkoder",
+  "author": "santosh sah",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
