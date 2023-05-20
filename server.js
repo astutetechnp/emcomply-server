@@ -9,7 +9,7 @@ const app = express();
 let connection = null;
 
 var corsOptions = {
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "http://localhost:8081"],
 };
 
 app.use(cors(corsOptions));

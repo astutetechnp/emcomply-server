@@ -10,7 +10,11 @@ module.exports = function (app) {
         next();
     });
 
-    app.get("/api/getCompanies", controller.getCompanies);
+    app.get(
+        "/api/getCompanies",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.getCompanies
+    );
     app.get("/api/getCompanyById/:companyId", controller.getCompanyById);
 
     app.post("/api/addCompany", controller.addCompany);

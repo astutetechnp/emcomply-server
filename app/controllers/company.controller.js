@@ -81,9 +81,9 @@ exports.getCompanyById = (req, res) => {
 exports.getCompanies = (req, res) => {
     Company.find({}, (err, companies) => {
         if (err) {
-            res.status(200).json({ result: false, message: err });
+            res.status(403).json({ message: err });
             return;
         }
-        res.status(200).json({ result: true, data: companies });
+        res.status(200).json({ data: companies });
     });
 };
