@@ -15,8 +15,20 @@ module.exports = function (app) {
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.getCompanies
     );
-    app.get("/api/getCompanyById/:companyId", controller.getCompanyById);
+    app.get(
+        "/api/getCompanyById/:companyId",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.getCompanyById
+    );
 
-    app.post("/api/addCompany", controller.addCompany);
-    app.put("/api/updateCompany", controller.updateCompany);
+    app.post(
+        "/api/addCompany",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.addCompany
+    );
+    app.put(
+        "/api/updateCompany",
+        [authJwt.verifyToken, authJwt.isAdmin],
+        controller.updateCompany
+    );
 };

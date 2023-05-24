@@ -25,12 +25,9 @@ exports.addCompany = (req, res) => {
 
     company.save((err, companyObj) => {
         if (err) {
-            return res
-                .status(200)
-                .json({ result: false, message: err.message });
+            return res.status(400).json({ message: err.message });
         }
         res.status(200).json({
-            result: true,
             message: "Company was created successfully!",
             data: companyObj,
         });
@@ -40,36 +37,28 @@ exports.addCompany = (req, res) => {
 exports.updateCompany = (req, res) => {
     var patchObj = req.body;
 
-    Company.updateOne(
-        { _id: ObjectId(req.body.id) },
-        patchObj,
-        function (err, company) {
-            if (err) {
-                return res.status(200).json({
-                    result: false,
-                    message: "cannot update Company",
-                });
-            } else if (company) {
-                return res.status(200).json({
-                    result: true,
-                    message: "successfully updated company",
-                });
-            }
+    Company.updateOne({ _id: req.body._id }, patchObj, function (err, company) {
+        if (err) {
+            return res.status(403).json({
+                message: "cannot update Company",
+            });
+        } else if (company) {
+            return res.status(200).json({
+                message: "successfully updated company",
+            });
         }
-    );
+    });
 };
 
 exports.getCompanyById = (req, res) => {
     const id = req.params.companyId;
-    console.log(id);
 
     Company.findById({ _id: ObjectId(id) }, (err, company) => {
         if (err) {
-            res.status(200).json({ result: false, message: err });
+            res.status(403).json({ message: err });
             return;
         } else if (!company) {
             res.status(200).json({
-                result: false,
                 message: "No Company Found",
             });
             return;
