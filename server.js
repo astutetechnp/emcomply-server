@@ -9,7 +9,11 @@ const app = express();
 let connection = null;
 
 var corsOptions = {
-    origin: ["http://localhost:3000", "http://localhost:8081"],
+    origin: [
+        // "http://localhost:3000",
+        // "http://localhost:8081",
+        "https://warm-lamington-7817e5.netlify.app/",
+    ],
 };
 
 app.use(cors(corsOptions));
