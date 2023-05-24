@@ -1,4 +1,5 @@
-const { authJwt, firebase } = require("../middlewares");
+const { authJwt } = require("../middlewares");
+//const { authJwt, firebase } = require("../middlewares");
 const controller = require("../controllers/user.controller");
 
 module.exports = function (app) {
@@ -37,13 +38,13 @@ module.exports = function (app) {
 
     app.post(
         "/api/sendNotification",
-        firebase.isFirebaseAuthorized,
+        //firebase.isFirebaseAuthorized,
         controller.sendNotification
     );
 
     app.post(
         "/api/sendNotificationToTopic",
-        firebase.isFirebaseAuthorized,
+        //firebase.isFirebaseAuthorized,
         controller.sendNotificationToTopic
     );
 };
