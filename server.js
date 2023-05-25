@@ -10,13 +10,13 @@ let connection = null;
 
 var corsOptions = {
     origin: [
-        // "http://localhost:3000",
-        // "http://localhost:8081",
+        "http://localhost:3000",
+        "http://localhost:8081",
         "https://warm-lamington-7817e5.netlify.app/",
     ],
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(function (req, res, next) {
     res.header(
