@@ -9,19 +9,15 @@ const app = express();
 let connection = null;
 
 var corsOptions = {
-    origin: [
-        "http://localhost:3000",
-        "http://localhost:8081",
-        "https://warm-lamington-7817e5.netlify.app/",
-    ],
+    origin: ["https://warm-lamington-7817e5.netlify.app"],
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(function (req, res, next) {
     res.header(
         "Access-Control-Allow-Origin",
-        "https://warm-lamington-7817e5.netlify.app/api"
+        "https://warm-lamington-7817e5.netlify.app"
     ); // update to match the domain you will make the request from
     res.header(
         "Access-Control-Allow-Headers",
