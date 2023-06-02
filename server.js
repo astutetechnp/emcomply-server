@@ -9,16 +9,13 @@ const app = express();
 let connection = null;
 
 var corsOptions = {
-    origin: ["https://warm-lamington-7817e5.netlify.app"],
+    origin: ["http://portal.emcomply.com"],
 };
 
 app.use(cors(corsOptions));
 
 app.use(function (req, res, next) {
-    res.header(
-        "Access-Control-Allow-Origin",
-        "https://warm-lamington-7817e5.netlify.app"
-    ); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", ["http://portal.emcomply.com"]); // update to match the domain you will make the request from
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept"
