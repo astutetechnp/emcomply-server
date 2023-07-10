@@ -51,9 +51,11 @@ exports.companyBoard = (req, res) => {
 };
 
 exports.userList = (req, res) => {
-    User.find().then((user) => {
-        res.json(user);
-    });
+    User.find()
+        .populate("roles", "name")
+        .then((user) => {
+            res.json(user);
+        });
 };
 
 exports.dashboard = (req, res) => {

@@ -29,7 +29,7 @@ module.exports = function (app) {
     );
 
     app.get(
-        "/api/test/users",
+        "/api/users",
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.userList
     );

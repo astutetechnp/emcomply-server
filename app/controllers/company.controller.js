@@ -21,6 +21,7 @@ exports.addCompany = (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         status: req.body.status,
+        userId: req.body.userId,
     });
 
     company.save((err, companyObj) => {

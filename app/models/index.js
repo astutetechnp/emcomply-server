@@ -8,6 +8,7 @@ db.mongoose = mongoose;
 db.user = require("./user.model");
 db.role = require("./role.model");
 db.company = require("./company.model");
+db.employee = require("./employee.model");
 db.products = require("./products.model");
 db.refreshToken = require("./refreshToken.model");
 

@@ -9,13 +9,21 @@ const app = express();
 let connection = null;
 
 var corsOptions = {
-    origin: ["https://portal.emcomply.com"],
+    origin:
+        process.env.APP_ENV == "debug"
+            ? ["http://localhost:8081"]
+            : ["https://portal.emcomply.com"],
 };
 
 app.use(cors(corsOptions));
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", ["https://portal.emcomply.com"]); // update to match the domain you will make the request from
+    res.header(
+        "Access-Control-Allow-Origin",
+        process.env.APP_ENV == "debug"
+            ? ["http://localhost:8081"]
+            : ["https://portal.emcomply.com"]
+    ); // update to match the domain you will make the request from
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept"
@@ -66,9 +74,11 @@ app.get("/", (req, res) => {
 });
 
 // routes
+require("./app/routes/role.routes")(app);
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/company.routes")(app);
+require("./app/routes/employee.routes")(app);
 require("./app/routes/products.routes")(app);
 
 // set port, listen for requests
